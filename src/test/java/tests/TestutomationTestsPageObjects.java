@@ -5,15 +5,16 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestutomationTestsPageObjects {
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @BeforeAll
     static void setUp(){
@@ -24,14 +25,17 @@ public class TestutomationTestsPageObjects {
     }
     @Test
     void formTests(){
-        // executeJavaScript("$('footer').remove()");
-        // executeJavaScript("$('#fixedban').remove()");
-        open("/automation-practice-form");
-        $("#firstName").setValue("Ivan");
-        $("#lastName").setValue("Ivanov");
-        $("#userEmail").setValue("Ivanov@mail.ru");
-        $("#genterWrapper").$(new ByText("Other")).click();
-        $("#userNumber").setValue("89000765432");
+        String userName = "Ivan";
+
+        registrationPage.openPage();
+        registrationPage.setFirstName(userName);
+        registrationPage.setLastName("Ivanov");
+        registrationPage.setEmail("Ivanov@mail.ru");
+        registrationPage.setGender("Other");
+        registrationPage.setPhone("89000765432");
+
+
+
         $("[id=dateOfBirthInput]").click();
         $(".react-datepicker__month-select").click();
         $(".react-datepicker__month-select").selectOption("May");
