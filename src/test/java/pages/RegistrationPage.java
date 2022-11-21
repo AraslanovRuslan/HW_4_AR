@@ -20,7 +20,6 @@ public class RegistrationPage {
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
 
     }
-
     public void setFirstName(String value) {
         firstNameInput.setValue(value);
     }
