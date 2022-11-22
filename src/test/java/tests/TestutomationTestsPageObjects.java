@@ -13,18 +13,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestutomationTestsPageObjects {
-    RegistrationPage registrationPage = new RegistrationPage();
+public class TestutomationTestsPageObjects extends TestBase {
 
-    @BeforeAll
-    static void setUp(){
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-
-    }
     @Test
-    void formTests(){
+    void formTests() {
         String userName = "Ivan";
 
         registrationPage.openPage();
@@ -33,16 +25,9 @@ public class TestutomationTestsPageObjects {
         registrationPage.setEmail("Ivanov@mail.ru");
         registrationPage.setGender("Other");
         registrationPage.setPhone("89000765432");
+        registrationPage.setBirthDate("26","May", "1990");
 
 
-
-        $("[id=dateOfBirthInput]").click();
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select").selectOption("May");
-        $(".react-datepicker__year-select").click();
-        $(".react-datepicker__year-select").selectOption("1990");
-        $(".react-datepicker__year-select").click();
-        $(".react-datepicker__day--026").click();
         $("#subjectsInput").click();
         $("#subjectsInput").setValue("Physics");
         $("#subjectsInput").pressTab();
@@ -54,6 +39,8 @@ public class TestutomationTestsPageObjects {
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
+
+
 
         $(".modal-content").shouldBe(Condition.visible);
         $(".modal-content").shouldHave(text("Ivan Ivanov"));
@@ -69,7 +56,6 @@ public class TestutomationTestsPageObjects {
         $("#closeLargeModal").click();
 
     }
-
 
 
 }
