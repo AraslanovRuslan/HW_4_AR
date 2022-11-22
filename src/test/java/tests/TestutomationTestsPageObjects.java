@@ -27,6 +27,7 @@ public class TestutomationTestsPageObjects extends TestBase {
 
 
 
+        $("#subjectsInput").pressTab();
         $("#hobbiesWrapper").$(new ByText("Reading")).click();
         $("[id=uploadPicture]").uploadFile(new File("src/test/resources/paddington-g51aae444a_640.jpg"));
         $("#currentAddress").setValue("Some Address111");
