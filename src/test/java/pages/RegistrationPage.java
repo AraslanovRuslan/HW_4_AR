@@ -39,16 +39,22 @@ public class RegistrationPage {
     public void setPhone(String value) {
         $("#userNumber").setValue(value);
     }
-
     public void setBirthDate(String day, String month, String year) {
         $("[id=dateOfBirthInput]").click();
         calendarComponent.setDate(day, month, year);
     }
+    public void setSubjects(String value) {
+        $("#subjectsInput").setValue(value);
+    }
+
 
     public void verifyResultsModal() {
-
-
-
+    registrationResultsModal. verifyModalAppears();
     }
+
+    public void verifyResult(String key, String value) {
+        registrationResultsModal. verifyResult(key, value);
+    }
+
 }
 
